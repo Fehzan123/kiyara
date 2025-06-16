@@ -10,8 +10,8 @@ A simple beverage company landing page with responsive design using Tailwind CSS
  kyara-Beverages-project/
 │
 ├── index.html Main HTML file
-├── css/
-│ └── style.css Optional custom styles
+├── tailwind css/
+│ 
 ├── images/
 │ └── logo.png All images used
 └── js/

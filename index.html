@@ -19,16 +19,21 @@
 <body class="bg-gray-100 text-gray-800">
 
   <!-- Navigation Bar -->
-  <nav class="bg-pink-600 text-white flex justify-between items-center px-6 py-4">
-    <div class="text-xl font-bold">Kyara</div>
-    <ul class="flex space-x-6">
-      <li><a href="#home" class="hover:text-gray-200">Home</a></li>
-      <li><a href="#about" class="hover:text-gray-200">About</a></li>
-      <li><a href="#contact" class="hover:text-gray-200">Contact</a></li>
-      <li id="authLink">
-        <button onclick="openModal()" class="hover:text-gray-200">Login</button>
-      </li>
+  <nav class="bg-pink-600 text-white px-6 py-4">
+    <div class="flex justify-between items-center">
+      <div class="text-xl font-bold">Kyara</div>
+      <!-- Hamburger Button (Mobile) -->
+      <button class="md:hidden text-white text-3xl" onclick="toggleMenu()">☰</button>
+    </div>
+    
+    <!-- Navigation Links -->
+    <ul id="navMenu" class="hidden md:flex flex-col md:flex-row md:items-center md:space-x-6 mt-4 md:mt-0">
+      <li><a href="#home" class="block py-2 md:py-0 hover:text-gray-200">Home</a></li>
+      <li><a href="#about" class="block py-2 md:py-0 hover:text-gray-200">About</a></li>
       
+
+      <li><a href="#contact" class="block py-2 md:py-0 hover:text-gray-200">Contact</a></li>
+      <li><button onclick="openModal()" class="block py-2 md:py-0 hover:text-gray-200">Login</button></li>
     </ul>
   </nav>
 
@@ -49,26 +54,42 @@
   </section>
 
   <!-- Products -->
-  <section class="py-10 px-4 max-w-6xl mx-auto">
+  <section id="products" class="py-10 px-4 max-w-6xl mx-auto">
     <div class="flex flex-wrap justify-center gap-6">
-      <div class="bg-white p-6 rounded-xl shadow-md w-72 text-center">
-        <img src="img/juic.jpeg" alt="Fruit Fusion" class="w-full h-40 object-cover rounded-md">
-        <h3 class="mt-4 text-xl font-semibold">Fruit Fusion</h3>
-        <p class="text-sm text-gray-600 mt-2">Tropical fruits to energize your day.</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow-md w-72 text-center">
-        <img src="img/hearbaltea.jpg" alt="Herbal Calm" class="w-full h-40 object-cover rounded-md">
-        <h3 class="mt-4 text-xl font-semibold">Herbal Calm</h3>
-        <p class="text-sm text-gray-600 mt-2">Chamomile and mint herbal infusion.</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow-md w-72 text-center">
-        <img src="img/lemonade.jpg" alt="Lemon Zest" class="w-full h-40 object-cover rounded-md">
-        <h3 class="mt-4 text-xl font-semibold">Lemon Zest</h3>
-        <p class="text-sm text-gray-600 mt-2">Tangy lemonade with real lemons.</p>
-      </div>
+      
+      <!-- Product 1 -->
+<div onclick="openhero('Fruit Fusion', 'Tropical fruits to energize your day.', 'img/juic.jpeg', 99)" 
+class="bg-white p-6 rounded-xl shadow-md w-72 text-center hover:shadow-lg transition cursor-pointer">
+<img src="img/juic.jpeg" alt="Fruit Fusion" class="w-full h-40 object-cover rounded-md">
+<h3 class="mt-4 text-xl font-semibold">Fruit Fusion</h3>
+<p class="text-sm text-gray-600 mt-2">Tropical fruits to energize your day.</p>
+<button class="w-full bg-pink-600 text-white py-2 rounded-md hover:bg-pink-700">Order Now</button>
+
+</div>
+<div onclick="openhero('Herbal Calm', 'Chamomile and mint herbal infusion.', 'img/hearbaltea.jpg', 99)" 
+class="bg-white p-6 rounded-xl shadow-md w-72 text-center hover:shadow-lg transition cursor-pointer">
+<img src="img/hearbaltea.jpg" alt="Fruit Fusion" class="w-full h-40 object-cover rounded-md">
+<h3 class="mt-4 text-xl font-semibold">Herbal Calm</h3>
+<p class="text-sm text-gray-600 mt-2">Chamomile and mint herbal infusion.</p>
+<button class="w-full bg-pink-600 text-white py-2 rounded-md hover:bg-pink-700">Order Now</button>
+
+</div>
+<div onclick="openhero('Lemon Zest', 'Tangy lemonade with real lemons.', 'img/lemonade.jpg', 99)" 
+class="bg-white p-6 rounded-xl shadow-md w-72 text-center hover:shadow-lg transition cursor-pointer">
+<img src="img/lemonade.jpg" alt="Fruit Fusion" class="w-full h-40 object-cover rounded-md">
+<h3 class="mt-4 text-xl font-semibold">Lemon Zest</h3>
+<p class="text-sm text-gray-600 mt-2">Tangy lemonade with real lemons.</p>
+<button class="w-full bg-pink-600 text-white py-2 rounded-md hover:bg-pink-700">Order Now</button>
+</div>
+
+ 
+  
+      
+     
+  
     </div>
   </section>
-
+  
   <!-- Contact -->
   <section id="contact" class="py-10 px-4 max-w-xl mx-auto">
     <h2 class="text-2xl font-semibold text-center mb-6">Contact Us</h2>
@@ -76,14 +97,17 @@
       <input type="text" name="name" placeholder="Your Name" required class="w-full px-4 py-3 border border-gray-300 rounded-md">
       <input type="email" name="email" placeholder="Your Email" required class="w-full px-4 py-3 border border-gray-300 rounded-md">
       <textarea name="message" rows="5" placeholder="Your Message" required class="w-full px-4 py-3 border border-gray-300 rounded-md"></textarea>
-      <button type="submit" class="bg-pink-600 text-white px-6 py-3 rounded-md hover:bg-blue-700">Send Message</button>
+      <button onclick="contectUs(event)" type="submit" class="bg-pink-600 text-white px-6 py-3 rounded-md hover:bg-blue-700">Send Message</button>
+      <p id="thankYouMsgcontect" class="text-green-600 font-semibold text-center mt-4 hidden">
+        ✅ Thank you! for contect us we will connect with you as soon as posible.
+      </p>
     </form>
   </section>
 <!-- Add this inside <body> before </body> -->
 <!-- Login/Signup Modal -->
 <div id="authModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
   <div class="bg-white w-full max-w-md p-6 rounded-xl shadow-lg relative">
-    <button onclick="closeModal()" class="absolute top-2 right-3 text-gray-500 hover:text-red-500 text-xl">&times;</button>
+    <button onclick="closeAuthModal()" class="absolute top-2 right-3 text-gray-500 hover:text-red-500 text-xl">&times;</button>
 
     <h2 id="formTitle" class="text-2xl font-bold text-center mb-4">Login</h2>
     
@@ -106,6 +130,33 @@
     </p>
   </div>
 </div>
+<!-- product dropDown -->
+<div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center z-50">
+  <div class="bg-white p-6 rounded-xl shadow-xl w-96 relative">
+    <button onclick="closeModal()" class="absolute top-2 right-2 text-gray-500 hover:text-red-600 text-xl">&times;</button>
+    
+    <div id="selectedProduct" class="mb-4">
+      <!-- Product info will be shown here -->
+    </div>
+
+    <form onsubmit="handleBuyNow(event)">
+      <label class="block mb-2 text-sm font-medium">your name</label>
+      <input type="text" class="w-full px-4 py-2 border rounded-md mb-4" placeholder="Name" required />
+    
+      <label class="block mb-2 text-sm font-medium">number</label>
+      <input type="number" class="w-full px-4 py-2 border rounded-md mb-4"  required />
+    
+      <button type="submit" class="w-full bg-pink-600 text-white py-2 rounded hover:bg-blue-700">Buy Now</button>
+    </form>
+    
+    <!-- Thank You Message (initially hidden) -->
+    <p id="thankYouMsg" class="text-green-600 font-semibold text-center mt-4 hidden">
+      ✅ Thank you! Your order was successful.
+    </p>
+    
+  </div>
+</div>
+
 
   <!-- Footer -->
   <footer class="bg-pink-600 text-white text-center py-6 mt-10">
@@ -113,6 +164,6 @@
   </footer>
 
   <!-- Login Script -->
-,<script src="index.js"></script>
+<script src="index.js"></script>
 </body>
 </html>
